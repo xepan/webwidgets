@@ -1,0 +1,47 @@
+div(id="{$_name}" class="{$class}")
+  {Pannel}
+  header(class=" {$class} ")
+      .pull-right {$grid_buttons} 
+      .form-group.pull-right.xepan-filter-form
+        div(class="form-control pull-left")|{$quick_search}
+  {/Pannel}
+  .container.content
+    #carousel-example-generic.carousel.slide(data-ride='carousel')
+      {header}{cols}{col}{/}{/}{/}
+      {rows}{row}
+      div.carousel-inner(class="{$odd_even} col-md-{col-width}4{/}" data-id="{$id}")
+      .item.active
+      {cols}    
+      .thumbnail.adjust1
+        .col-md-2.col-sm-2.col-xs-12
+          img.media-object.img-rounded.img-responsive(src='{$file}') 
+        .col-md-10.col-sm-10.col-xs-12
+          .caption
+            p.text-info.lead.adjust2 {$tite}
+            p
+              span.glyphicon.glyphicon-thumbs-up
+              | {$description}
+            blockquote.adjust2
+              p {$customer_name}
+              small
+                cite(title='Source Title')
+                  i.glyphicon.glyphicon-globe
+                  |  {$created_at}
+            a.left.carousel-control(href='#carousel-example-generic', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-left
+            |  
+            a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
+              span.glyphicon.glyphicon-chevron-right
+      {/}
+      {/}{/}
+      {not_found}
+      div.row
+        .col-md-12.text-center.alert.alert-warning(role="alert")
+          span.icon-attention.fa.fa-exclamation-triangle  &nbsp;{$not_found_message}
+      {/}
+
+      {totals}{cols}{col}{$content}{/}{/}{/}
+    {$Paginator}
+
+style.
+  .carousel-indicators .active{ background: #31708f; } .content{ margin-top:20px; } .adjust1{ float:left; width:100%; margin-bottom:0; } .adjust2{ margin:0; } .carousel-indicators li{ border :1px solid #ccc; } .carousel-control{ color:#31708f; width:5%; } .carousel-control:hover, .carousel-control:focus{ color:#31708f; } .carousel-control.left, .carousel-control.right { background-image: none; } .media-object{ margin:auto; margin-top:15%; } @media screen and (max-width: 768px) { .media-object{ margin-top:0; } }
