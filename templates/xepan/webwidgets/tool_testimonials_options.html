@@ -22,7 +22,7 @@
                 </td>
               </div>
             </tr>
-            <tr>
+            <tr class="add-paginator">
               <div class="xepan-tool-option">
                 <td class="xepan-tool-option-title">Add Paginator</td>
                 <td class="xepan-tool-option-value">
@@ -55,7 +55,7 @@
                 </td>
               </div>
             </tr>
-            <tr>
+            <tr class="column-width">
               <div class="xepan-tool-option">
                 <td class="xepan-tool-option-title">Column Width In List Template</td>
                 <td class="xepan-tool-option-value">
@@ -77,7 +77,7 @@
                 </td>
               </div>
             </tr>
-            <tr>
+            <tr class="paginator-limit">
               <div class="xepan-tool-option">
                 <td class="xepan-tool-option-title">Paginator Limit</td>
                 <td class="xepan-tool-option-value"> 
@@ -101,4 +101,25 @@
   		$(this).val($(current_selected_component).attr($(this).data('attr')));				
   	});
   })
+  
+  $(document).ready(function(){
+      $('#template_type').on('change', function() {
+        if (this.value == 'corusel')
+        {
+          $(".add-paginator").hide();
+          $(".column-width").hide();
+          $(".paginator-limit").hide();
+        }
+        else if(this.value == 'grid')
+        {
+          $(".column-width").hide();
+        }
+  	  else{
+  		$(".add-paginator").show();
+  		$(".column-width").show();
+  		$(".paginator-limit").show();
+    	  }
+  
+      });
+  });
 </script>

@@ -18,7 +18,7 @@
 										option(value="grid") Grid
 										option(value="list") List
 										option(value="corusel") Corusel
-						tr
+						tr.add-paginator
 							.xepan-tool-option
 								td.xepan-tool-option-title Add Paginator
 								td.xepan-tool-option-value
@@ -39,7 +39,7 @@
 									select#show_title(data-attr='show_title' data-defaultvalue="yes")
 										option(value="true") Yes
 										option(value="false") No
-						tr
+						tr.column-width
 							.xepan-tool-option
 								td.xepan-tool-option-title Column Width In List Template
 								td.xepan-tool-option-value
@@ -54,7 +54,7 @@
 								td.xepan-tool-option-title Record Limit
 								td.xepan-tool-option-value
 									input#record_limit(data-attr='record_limit')
-						tr
+						tr.paginator-limit
 							.xepan-tool-option
 								td.xepan-tool-option-title Paginator Limit
 								td.xepan-tool-option-value 
@@ -69,3 +69,24 @@ script.
 			$(this).val($(current_selected_component).attr($(this).data('attr')));				
 		});
 	})
+
+	$(document).ready(function(){
+	    $('#template_type').on('change', function() {
+	      if (this.value == 'corusel')
+	      {
+	        $(".add-paginator").hide();
+	        $(".column-width").hide();
+	        $(".paginator-limit").hide();
+	      }
+	      else if(this.value == 'grid')
+	      {
+	        $(".column-width").hide();
+	      }
+		  else{
+			$(".add-paginator").show();
+			$(".column-width").show();
+			$(".paginator-limit").show();
+	  	  }
+
+	    });
+	});
