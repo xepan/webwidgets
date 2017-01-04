@@ -23,13 +23,14 @@ class Model_GalleryImage extends \xepan\base\Model_Table{
 		$this->add('xepan\filestore\Field_File','file_id');
 		
 		$this->addField('title');
+		$this->addField('description')->type('text');
+
 		$this->addField('created_at')->type('datetime')->defaultValue($this->app->now);
 		$this->addField('status')->enum($this->status)->defaultValue('Visible');
 		
 		$this->addField('type');
 		$this->addCondition('type','GalleryImage');
 		
-
 		$this->addExpression('thumb_url')->set(function($m,$q){
 			return $q->expr('[0]',[$m->getElement('file')]);
 		});
