@@ -1,9 +1,5 @@
 <?php
 
-# VAIBHAV_TODO
-# paginator not working
-# List grid responsive
-
 namespace xepan\webwidgets;
 
 class Tool_Testimonials extends \xepan\cms\View_Tool{
@@ -12,8 +8,7 @@ class Tool_Testimonials extends \xepan\cms\View_Tool{
 				'template_type' =>'grid',
 				'record_limit'=>null,
 				'add_paginator'=>true,
-				'grid_paginator_limit'=>10,
-				'list_paginator_limit'=>10,
+				'paginator_limit'=>10,
 				'list_column_width'=>4,
 				'show_created_at'=>true,
 				'show_title'=>true,
@@ -31,13 +26,10 @@ class Tool_Testimonials extends \xepan\cms\View_Tool{
 		$testimonial_cl = $this->add('CompleteLister',null,null,[$template]);
 		$testimonial_cl->setModel($testimonial_m);	
 		
-		// if($this->options['template_type'] == 'grid' And $this->options['add_paginator'] == true){																													
-		// 	$testimonial_cl->add('Paginator',['ipp'=>$this->options['grid_paginator_limit']]);	
-		// }
-
-		// if($this->options['template_type'] == 'list' And $this->options['add_paginator'] == true){
-		// 	$testimonial_cl->add('Paginator',['ipp'=>$this->options['list_paginator_limit']]);	
-		// }
+		if($this->options['template_type'] != 'corusel' And $this->options['add_paginator'] == true){
+			$paginator = $testimonial_cl->add('Paginator');				
+			$paginator->setRowsPerPage($this->options['paginator_limit']);
+		}
 
 		$testimonial_cl->addHook('formatRow',function($l){
 			if($this->options['template_type'] == 'corusel'){

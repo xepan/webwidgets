@@ -39,35 +39,26 @@
 									select#show_title(data-attr='show_title' data-defaultvalue="yes")
 										option(value="true") Yes
 										option(value="false") No
-						tr.xepan-webwidgets-testimonials-option-toggle(style="display:none;")
+						tr
 							.xepan-tool-option
 								td.xepan-tool-option-title Column Width In List Template
-								td.xepan-tool-option-value 
-									input#list_column_width(data-attr='list_column_width' value="" data-defaultvalue="4")
+								td.xepan-tool-option-value
+									select#list_column_width(data-attr='list_column_width' data-defaultvalue="4")
+										option(value="4") 4
+										option(value="6") 6
+										option(value="12") 12
+										
 					table.table.table-condensed.table-hover
 						tr						
 							.xepan-tool-option
 								td.xepan-tool-option-title Record Limit
 								td.xepan-tool-option-value
 									input#record_limit(data-attr='record_limit')
-					table.table.table-condensed.table-hover
 						tr
 							.xepan-tool-option
-								td.xepan-tool-option-title Grid Paginator Limit
+								td.xepan-tool-option-title Paginator Limit
 								td.xepan-tool-option-value 
-									input#grid_paginator_limit(data-attr='grid_paginator_limit')
-					table.table.table-condensed.table-hover
-						tr
-							.xepan-tool-option
-								td.xepan-tool-option-title List Paginator Limit
-								td.xepan-tool-option-value 
-									input#list_paginator_limit(data-attr='list_paginator_limit')
-					table.table.table-condensed.table-hover
-						tr
-							.xepan-tool-option
-								td.xepan-tool-option-title List Column Width
-								td.xepan-tool-option-value 
-									input#list_column_width(data-attr='list_column_width')		
+									input#paginator_limit(data-attr='paginator_limit')
 script.
 	$('\#{$_name} [data-attr]').on('change',function(){
 		$(current_selected_component).attr($(this).data('attr'),$(this).val());
