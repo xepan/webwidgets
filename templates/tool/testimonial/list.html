@@ -12,14 +12,17 @@
     <div class="row">
       {header}{cols}{col}{/}{/}{/}
       {rows}{row}
-      <div data-id="{$id}" class="{$odd_even} col-md-{col-width}4{/}">{cols}
+      <div data-id="{$id}" class="{$odd_even} col-md-{list_column_width}4{/}">{cols}
         <div class="col-lg-12">
           <div id="tb-testimonial" class="testimonial testimonial-default">
-            <div class="testimonial-section"><span>{$description}                 </span></div>
+            <div class="testimonial-section">{title_wrapper}
+              <h5>{$title}</h5>{/}
+              <div><span>{$description}                 </span></div>
+            </div>
             <div class="testimonial-desc"><img src="{$file}" alt="Customer Image"/>                    
               <div class="testimonial-writer">
                 <div class="testimonial-writer-name">{$customer_name}</div>                      
-                <div class="testimonial-writer-designation"> </div>                      <a href="#" class="testimonial-writer-company">{$created_at}</a>
+                <div class="testimonial-writer-designation"> </div>{created_at_wrapper}                       <a href="#" class="testimonial-writer-company">{$created_at}</a>{/}
               </div>
             </div>
           </div>

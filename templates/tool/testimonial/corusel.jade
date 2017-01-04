@@ -9,15 +9,20 @@
     .item(class='{$active}')
       .row
         .col-md-2
-        .col-md-8.text-center
+        .col-md-8.text-center(style="margin-top:20px;")
+          {title_wrapper}
           h3
             b {$title}
+          {/}
           span
             blockquote {$description}
           div 
             img(src='{$file}', style='width:50px;  border-radius: 50%;')
             small
-              b {$customer_name}
+              b {$customer_name} &nbsp; &nbsp;
+            {created_at_wrapper}
+            small.text-muted {$created_at}
+            {/}  
         .col-md-2
       .carousel-caption
     |   {/}{/}

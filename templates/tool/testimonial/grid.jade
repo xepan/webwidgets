@@ -15,11 +15,9 @@
                 th
 
                 th
-                    span Customer Name
+                    span Customer
                 th
-                    span Title
-                th
-                    span Description   
+                    span     
                 {/}{/}
             {/}
             {$subheader}
@@ -33,9 +31,14 @@
                     td
                       | {$customer_name}
                     td
-                      | {$title}
-                    td
-                      | {$description}
+                      {title_wrapper}
+                      h4 {$title}
+                      {/}
+                      span {$description}
+                      div
+                        {created_at_wrapper}
+                        span.small.text-muted Created At : {$created_at}
+                        {/}
                     {/}
                 {/}{/}
                 {not_found}

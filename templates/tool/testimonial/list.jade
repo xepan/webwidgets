@@ -11,12 +11,16 @@
     .row
       {header}{cols}{col}{/}{/}{/}
       {rows}{row}
-      div(class="{$odd_even} col-md-{col-width}4{/}" data-id="{$id}")
+      div(class="{$odd_even} col-md-{list_column_width}4{/}" data-id="{$id}")
         {cols}
         .col-lg-12
           #tb-testimonial.testimonial.testimonial-default
             .testimonial-section
-                span {$description}                 
+                {title_wrapper}
+                h5 {$title}
+                {/}
+                div
+                    span {$description}                 
               .testimonial-desc
                 img(src='{$file}', alt='Customer Image')
                 |                     
@@ -24,9 +28,9 @@
                   .testimonial-writer-name {$customer_name}
                   |                       
                   .testimonial-writer-designation 
-                  |                       
+                  {created_at_wrapper}                       
                   a.testimonial-writer-company(href='#') {$created_at}
-
+                  {/}
       {/}
       {/}{/}
       {not_found}

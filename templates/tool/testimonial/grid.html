@@ -10,17 +10,18 @@
     <table style="width:100%" class="table user-list table-hover">{header}
       <thead>{cols}{col}
         <th></th>
-        <th><span>Customer Name</span></th>
-        <th><span>Title</span></th>
-        <th><span>Description   </span></th>{/}{/}
+        <th><span>Customer</span></th>
+        <th><span>    </span></th>{/}{/}
       </thead>{/}
       {$subheader}
       <tbody>{rows}{row}
         <tr data-id="{$id}" class="{$odd_even}">{cols}
           <td><img src="{$file}" class="img-circle"/></td>
           <td>{$customer_name}</td>
-          <td>{$title}</td>
-          <td>{$description}</td>{/}
+          <td>{title_wrapper}
+            <h4>{$title}</h4>{/}<span>{$description}</span>
+            <div>{created_at_wrapper}<span class="small text-muted">Created At : {$created_at}</span>{/}</div>
+          </td>{/}
         </tr>{/}{/}
         {not_found}
         {$not_found_message}
