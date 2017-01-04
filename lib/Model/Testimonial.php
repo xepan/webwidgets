@@ -47,7 +47,7 @@ class Model_Testimonial extends \xepan\base\Model_Table{
 	function deactivate(){
 		$this['status']='InActive';
 		$this->app->employee
-            ->addActivity("Testimonial : '".$this['title']."' has deactivated", null/* Related Document ID*/, $this->id /*Related Contact ID*/,null,null,null)
+            ->addActivity("Testimonial : '".$this['title']."' is deactivated", null/* Related Document ID*/, $this->id /*Related Contact ID*/,null,null,null)
             ->notifyWhoCan('activate','InActive',$this);
 		$this->save();
 	}
