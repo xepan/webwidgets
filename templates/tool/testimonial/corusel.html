@@ -1,157 +1,29 @@
 
-<div id="{$_name}" class="xepan-grid main-box clearfix {$class}">{Pannel}
-  <header class="main-box-header clearfix atk-actions  {$class} ">
-    <div class="filter-block">
-      <div class="pull-right">{$grid_buttons} </div>
-      <div class="form-group pull-right xepan-filter-form">
-        <div class="form-control pull-left">{$quick_search}<i class="fa fa-search search-icon"></i></div>
-      </div>
-    </div>
-  </header>{/Pannel}
-  <div class="container">
-    <div class="row">
-      {header}{cols}{col}{/}{/}{/}
-      {rows}{row}
-      <div data-id="{$id}" class="{$odd_even} col-md-offset-2.col-md-8">{cols}
-        <div id="quote-carousel" data-ride="carousel" class="carousel slide">
-          <ol class="carousel-indicators">
-            <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#quote-carousel" data-slide-to="1"></li>
-            <li data-target="#quote-carousel" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="item active">
-              <blockquote>
-                <div class="row">
-                  <div class="col-sm-3 text-center"><img src="{$file}" style="width: 100px;height:100px;" class="img-circle"/></div>
-                  <div class="col-sm-9">
-                    <p><span>{$description}</span></p><small>{$customer_name}</small>
-                  </div>
-                </div>
-              </blockquote>
-            </div>
-          </div><a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a><a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+<div id="{$_name}" data-ride="carousel" style="height:270px;" class="carousel slide">
+  <!-- <ol class="carousel-indicators">
+    <li data-target="undefined" data-slide-to="0" class="active"></li>
+    <li data-target="undefined" data-slide-to="1"></li>
+    <li data-target="undefined" data-slide-to="2"></li>
+  </ol> -->
+  <div role="listbox" class="carousel-inner">
+    {rows}
+    {row}
+    <div class="item {$active}">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+          <h3><b>{$title}</b></h3><span>
+            <blockquote>{$description}</blockquote></span>
+          <div> <img src="{$file}" style="width:50px;  border-radius: 50%;"/><small><b>{$customer_name}</b></small></div>
         </div>
-      </div>{/}
-      {/}{/}
-      {not_found}
-      <div class="row">{$not_found_message}</div>{/}
-      {totals}{cols}{col}{$content}{/}{/}{/}
-    </div>{$Paginator}
-  </div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="carousel-caption"></div>
+    </div>  {/}{/}
+  </div><a href="#{$_name}" role="button" data-slide="prev" class="left carousel-control"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">Previous</span></a><a href="#{$_name}" role="button" data-slide="next" class="right carousel-control"><span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next</span></a>
 </div>
 <style>
-  /* carousel */
-  #quote-carousel 
-  {
-    padding: 0 10px 30px 10px;
-    margin-top: 30px;
+  .carousel-control{
+    height: 270px;
   }
-  
-  /* Control buttons  */
-  #quote-carousel .carousel-control
-  {
-    background: none;
-    color: #222;
-    font-size: 2.3em;
-    text-shadow: none;
-    margin-top: 30px;
-  }
-  /* Previous button  */
-  #quote-carousel .carousel-control.left 
-  {
-    left: -12px;
-  }
-  /* Next button  */
-  #quote-carousel .carousel-control.right 
-  {
-    right: -12px !important;
-  }
-  /* Changes the position of the indicators */
-  #quote-carousel .carousel-indicators 
-  {
-    right: 50%;
-    top: auto;
-    bottom: 0px;
-    margin-right: -19px;
-  }
-  /* Changes the color of the indicators */
-  #quote-carousel .carousel-indicators li 
-  {
-    background: #c0c0c0;
-  }
-  #quote-carousel .carousel-indicators .active 
-  {
-    background: #333333;
-  }
-  #quote-carousel img
-  {
-    width: 250px;
-    height: 100px
-  }
-  /* End carousel */
-  
-  .item blockquote {
-      border-left: none; 
-      margin: 0;
-  }
-  
-  .item blockquote img {
-      margin-bottom: 10px;
-  }
-  
-  .item blockquote p:before {
-      content: "\f10d";
-      font-family: 'Fontawesome';
-      float: left;
-      margin-right: 10px;
-  }
-  
-  
-  
-  /**
-    MEDIA QUERIES
-  */
-  
-  /* Small devices (tablets, 768px and up) */
-  @media (min-width: 768px) { 
-      #quote-carousel 
-      {
-        margin-bottom: 0;
-        padding: 0 40px 30px 40px;
-      }
-      
-  }
-  
-  /* Small devices (tablets, up to 768px) */
-  @media (max-width: 768px) { 
-      
-      /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
-      
-      #quote-carousel .carousel-indicators {
-          bottom: -20px !important;  
-      }
-      #quote-carousel .carousel-indicators li {
-          display: inline-block;
-          margin: 0px 5px;
-          width: 15px;
-          height: 15px;
-      }
-      #quote-carousel .carousel-indicators li.active {
-          margin: 0px 5px;
-          width: 20px;
-          height: 20px;
-      }
-  }
-  
 </style>
-<script>
-  // When the DOM is ready, run this function
-  $(document).ready(function() {
-  //Set the carousel options
-  $('#quote-carousel').carousel({
-  pause: true,
-  interval: 4000,
-  });
-  });
-</script>
