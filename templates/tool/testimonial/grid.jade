@@ -19,12 +19,7 @@
                 th
                     span Title
                 th
-                    span Description
-                {created_at_wrapper}
-                th
-                    span Created At
-                {/}    
-                th 
+                    span Description   
                 {/}{/}
             {/}
             {$subheader}
@@ -34,29 +29,17 @@
                 tr(class="{$odd_even}" data-id="{$id}")
                     {cols}
                     td
-                      img(src="{$file}")
+                      img.img-circle(src="{$file}")
                     td
                       | {$customer_name}
                     td
                       | {$title}
                     td
                       | {$description}
-                    {created_at_wrapper}
-                    td
-                      | {$created_at}  
-                    {/}
-                    td
-                      |	{$action}		
-                    td(style="width: 15%;")
-                        {$edit}
-                        {$delete}
-                    
                     {/}
                 {/}{/}
                 {not_found}
-                div.row
-                    .col-md-12.text-center.alert.alert-warning(role="alert")
-                        span.icon-attention.fa.fa-exclamation-triangle  &nbsp;{$not_found_message}
+                {$not_found_message}
                 {/}
 
             {totals}
@@ -69,3 +52,10 @@
                     {/}{/}
             {/}
         {$Paginator}
+
+style.
+    .img-circle {
+        border-radius: 50%;
+        height: 50px;
+        width:50px;
+    }

@@ -13,27 +13,25 @@
       {rows}{row}
       div(class="{$odd_even} col-md-{col-width}4{/}" data-id="{$id}")
         {cols}
-        
         .col-lg-12
           #tb-testimonial.testimonial.testimonial-default
             .testimonial-section
-                | {$description}                 
+                span {$description}                 
               .testimonial-desc
                 img(src='{$file}', alt='Customer Image')
                 |                     
                 .testimonial-writer
                   .testimonial-writer-name {$customer_name}
                   |                       
-                  .testimonial-writer-designation Front End Developer
+                  .testimonial-writer-designation 
                   |                       
-                  a.testimonial-writer-company(href='#') Touch Base
+                  a.testimonial-writer-company(href='#') {$created_at}
 
       {/}
       {/}{/}
       {not_found}
       div.row
-        .col-md-12.text-center.alert.alert-warning(role="alert")
-          span.icon-attention.fa.fa-exclamation-triangle  &nbsp;{$not_found_message}
+        {$not_found_message}
       {/}
 
       {totals}{cols}{col}{$content}{/}{/}{/}
@@ -46,7 +44,7 @@ style.
 
     .testimonial-section {
         width: 100%;
-        height: auto;
+        height: 200px;
         padding: 15px;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;

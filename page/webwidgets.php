@@ -22,9 +22,6 @@ class page_webwidgets extends \xepan\base\Page{
 		$grid = $this->add('Grid');
 		$grid->setSource($files_array);
 		$grid->addColumn('name');
-		$grid->removeColumn('id');
-		
-		// $grid->addColumn('link','run')->setTemplate('<a href="'.$this->app->url('xepan/webwidgets/'));
-		// $grid->addPaginator(20);
+		$grid->removeColumn('id');		
 	}
 }
