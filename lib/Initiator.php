@@ -8,7 +8,11 @@ class Initiator extends \Controller_Addon {
 	function setup_admin(){
 		
 		$this->routePages('xepan_webwidgets');
-		$this->addLocation(array('template'=>'templates','js'=>'templates/js'))
+		$this->addLocation(array(
+				'template'=>'templates',
+				'js'=>'templates/js',
+				'css'=>'templates/css')
+			)
 		->setBaseURL('../vendor/xepan/webwidgets/');
 
 		$m = $this->app->cms_menu;
@@ -19,11 +23,16 @@ class Initiator extends \Controller_Addon {
 
 	function setup_frontend(){
 		$this->routePages('xepan_webwidgets');
-		$this->addLocation(array('template'=>'templates','js'=>'templates/js'))
+		$this->addLocation(array(
+				'template'=>'templates',
+				'js'=>'templates/js',
+				'css'=>'templates/css')
+		)
 		->setBaseURL('./vendor/xepan/webwidgets/');
 
 		if($this->app->isEditing){	
 			$this->app->exportFrontEndTool('xepan\webwidgets\Tool_Testimonials','webwidgets');
+			$this->app->exportFrontEndTool('xepan\webwidgets\Tool_Gallery','webwidgets');
 		}
 
 		return $this;	

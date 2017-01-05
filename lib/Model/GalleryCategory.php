@@ -23,6 +23,7 @@ class Model_GalleryCategory extends \xepan\base\Model_Table{
 		$this->addCondition('type','PostCategory');
 
 		$this->hasMany('xepan\webwidgets\GalleryImage','gallery_image_id');
+		$this->hasMany('xepan\webwidgets\GalleryImageAssociation','gallery_category_id');
 	}
 
 	function activate(){
@@ -39,5 +40,16 @@ class Model_GalleryCategory extends \xepan\base\Model_Table{
             ->addActivity("Gallery Category : '".$this['name']."' is deactivated", null/* Related Document ID*/, $this->id /*Related Contact ID*/,null,null,null)
             ->notifyWhoCan('activate','InActive',$this);
 		$this->save();
+	}
+
+	function getAssociatedImages(){
+		$associated_images = $this->ref('xepan\webwidgets\GalleryImageAssociation')
+								->_dsql()->del('fields')->field('gallery_image_id')->getAll();
+		return iterator_to_array(new \RecursiveIteratorIterator(new \RecursiveArrayIterator($associated_images)),false);
+	}
+
+	function removeAssociatedImages(){
+		$this->ref('xepan\webwidgets\GalleryImageAssociation')
+								->deleteAll();
 	}
 }

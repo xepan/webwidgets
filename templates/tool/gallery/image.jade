@@ -1,0 +1,17 @@
+div.xepan-galary-tool(id="{$_name}" class="{$class}")
+  {rows}{row}
+  a.fancybox(rel="gallery1{$_name}" href="{$file}" title="{$title}")
+    img(src="{$file}" alt="{$alt}")
+  {/}{/}
+
+  style.
+    .xepan-galary-tool img{
+     padding:2px;
+     border:1px solid #021a40;
+     background-color:#fff;
+    }
+    .xepan-galary-tool img{
+      width:300px;
+      height:auto;
+      max-width:300px;
+    }
