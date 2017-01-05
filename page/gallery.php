@@ -3,8 +3,7 @@
 //  Category associated but not shown on grid 
 //  Categories not shown on field while editing
 //  Improve and category grid image grid
-//  Implement options
-//  
+//  Implement options  
 
 namespace xepan\webwidgets;
 class page_gallery extends \xepan\base\Page{

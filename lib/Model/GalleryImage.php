@@ -23,7 +23,6 @@ class Model_GalleryImage extends \xepan\base\Model_Table{
 		$this->add('xepan\filestore\Field_File','file_id');
 		
 		$this->addField('title');
-		$this->addField('description')->type('text');
 		$this->addField('alt_text');
 
 		$this->addField('created_at')->type('datetime')->defaultValue($this->app->now);
