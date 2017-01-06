@@ -34,7 +34,14 @@
                     td 
                       span {$description}
                     td
-                      span {$gallery_category}
+                        {$category}
+                        {category_lister}
+                        {rows}
+                        {row}
+                        .row 
+                            {$gallery_category}
+                        {/}{/}
+                        {/}
                     td
                       img(src="{$file}")    
                     td

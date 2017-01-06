@@ -12,6 +12,7 @@ class Tool_Gallery extends \xepan\cms\View_Tool{
 		parent::init();
 
 		$gallery_image_m = $this->add('xepan\webwidgets\Model_GalleryImage');
+		$gallery_image_m->addCondition('status','Visible');
 		
 		$this->lister = $image_lister = $this->add('CompleteLister',null,'image_lister',['tool\gallery\image']);
 		

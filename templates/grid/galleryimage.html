@@ -20,7 +20,17 @@
         <tr data-id="{$id}" class="{$odd_even}">{cols}  
           <td><span>{$title}</span></td>
           <td> <span>{$description}</span></td>
-          <td><span>{$gallery_category}</span></td>
+          <td>
+            {$category}
+            {category_lister}
+            {rows}
+            {row}
+            <div class="row">
+               
+              {$gallery_category}
+            </div>{/}{/}
+            {/}
+          </td>
           <td><img src="{$file}"/></td>
           <td>{$action}</td>
           <td style="width: 15%;">

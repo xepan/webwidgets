@@ -1,9 +1,12 @@
 <?php
 # TODO
-//  Category associated but not shown on grid 
+//  Category association problem 
 //  Categories not shown on field while editing
-//  Improve and category grid image grid
-//  Implement options  
+//  Improve tool grid
+//  Implement category option 
+//  If category is inactive then don't show images only associated with that category 
+//  Commenting
+//  Add widgets to Sidemenu
 
 namespace xepan\webwidgets;
 class page_gallery extends \xepan\base\Page{
@@ -25,8 +28,21 @@ class page_gallery extends \xepan\base\Page{
 		$image_c = $images->add('xepan\hr\CRUD',null,null,['grid\galleryimage']);
 		$image_c->setModel($images_m,['gallery_category_id','title','description','file_id'],['gallery_category','title','description','file','status','comma_seperated_categories']);
 	
+		$image_c->grid->addColumn('category');
+		$image_c->grid->addMethod('format_gallerycategory',function($grid,$field){	
+				$data = $grid->add('xepan\webwidgets\Model_GalleryImageAssociation')->addCondition('gallery_image_id',$grid->model->id);
+
+				$l = $grid->add('CompleteLister',null,'category',['grid/galleryimage','category_lister']);
+				$l->setModel($data);
+				
+				$grid->current_row_html[$field] = $l->getHtml();
+		});
+
+		$image_c->grid->addFormatter('category','gallerycategory');
+
 		if($image_c->isEditing()){
 			$image_c->form->getElement('gallery_category_id')->setAttr(['multiple'=>'multiple']);
+			}
 		}
 	}
 }
